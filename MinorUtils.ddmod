@@ -1,0 +1,8 @@
+{
+    "name": "Minor Utils",
+    "unique_id": "uchideshi34.MinorUtils",
+    "version": "1.6.0",
+    "author": "uchideshi34",
+    "description": "Add a small set of features to the DD UI: shortcut buttons, key mapping for tools, scatter presets, move walls to front and back.",
+    "dd_version": "1.1.0.6"
+}
