@@ -1549,7 +1549,14 @@ func on_bevel_walls_button_pressed(button_pressed: bool):
 # Check every frame if the we need to check the selection
 func update(delta : float):
 
-	pass
+	# If we are in the scatter tool
+	if Global.Editor.ActiveToolName == "ScatterTool":
+		# Check if the random mirror option is active
+		if ui_config["scatter"]["random_mirror_button"].pressed:
+			# Check if there is a mouse press on the canvas
+			if Input.is_mouse_button_pressed(BUTTON_LEFT):
+				# Apply random mirror to the current stroke
+				apply_random_mirror_to_current_stroke()
 
 
 #########################################################################################################
@@ -1765,14 +1772,7 @@ func on_unhandled_key_event(event):
 			_save_config_file()
 			return
 	
-	# If we are in the scatter tool
-	if Global.Editor.ActiveToolName == "ScatterTool":
-		# Check if the random mirror option is active
-		if ui_config["scatter"]["random_mirror_button"].pressed:
-			# Check if there is a mouse press on the canvas
-			if Input.is_mouse_button_pressed(BUTTON_LEFT):
-				# Apply random mirror to the current stroke
-				apply_random_mirror_to_current_stroke()
+	
 
 # Class which is node that emits unhandled key signals
 class UnhandledKeyEmitter extends Node:
