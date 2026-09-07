@@ -572,6 +572,8 @@ func make_shortcut_button(button_config: Dictionary):
 		if not button_config["visible"]:
 			button_config["button"].visible = false
 
+
+
 # Function to read and store links to the Preferences UI
 func read_preferences_ui_values():
 
@@ -1667,8 +1669,10 @@ func start() -> void:
 	read_preferences_ui_values()
 
 	for config in ui_config["buttons"]:
-		make_shortcut_button(config)
-		make_config_entry_for_button(config)
+		if config.has("tool_reference"):
+			if config["tool_reference"] in Global.Editor.Tools.keys():
+				make_shortcut_button(config)
+				make_config_entry_for_button(config)
 
 	make_scatter_presets_ui()
 
